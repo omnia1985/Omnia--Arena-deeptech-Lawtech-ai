@@ -8,7 +8,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. قاموس الترجمة الشامل للغات الست (القسم الأول والثاني معاً)
+# 2. قاموس الترجمة الشامل والمغلق لجميع اللغات الست (القسم الأول والثاني معاً)
 if 'translations' not in st.session_state:
     st.session_state.translations = {
         "العربية": {
@@ -125,4 +125,3 @@ if 'translations' not in st.session_state:
             "speed": "Velocidad", "passing": "Pases y Táctica", "stamina": "Resistencia",
             "pressure": "Bajo Presión", "focus": "Enfoque de Posición", "duels": "Duelos Ganados",
             "adapt": "Adaptación con Compañeros", "injury_pred": "Predicción de Lesiones", "injury_rec": "Recuperación de Lesión",
-         },
