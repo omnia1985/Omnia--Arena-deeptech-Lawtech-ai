@@ -125,3 +125,4 @@ if 'translations' not in st.session_state:
             "speed": "Velocidad", "passing": "Pases y Táctica", "stamina": "Resistencia",
             "pressure": "Bajo Presión", "focus": "Enfoque de Posición", "duels": "Duelos Ganados",
             "adapt": "Adaptación con Compañeros", "injury_pred": "Predicción de Lesiones", "injury_rec": "Recuperación de Lesión",
+       },
