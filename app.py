@@ -10,8 +10,8 @@ st.set_page_config(
 
 # 2. قاموس الترجمة الشامل والمغلق لجميع اللغات الست (القسم الأول والثاني معاً)
 if 'translations' not in st.session_state:
-    st.session_state.translations = {}
-    "ar": {
+    st.session_state.translations = {
+        "ar": {
             "lang_label": "اختر لغة المنصة / Choose Language",
             "sec1_title": "🏆 القسم الأول: بوابة الناشئين والأكاديميات (AI Youth Scouting)",
             "sec2_title": "👑 القسم الثاني: منصة المحترفين واللاعبين الكبار (AI Pro Analytics)",
@@ -126,4 +126,4 @@ if 'translations' not in st.session_state:
             "pressure": "Bajo Presión", "focus": "Enfoque de Posición", "duels": "Duelos Ganados",
             "adapt": "Adaptación con Compañeros", "injury_pred": "Predicción de Lesiones", "injury_rec": "Recuperación de Lesión",
                     }
-         
+}
