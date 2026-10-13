@@ -1,4 +1,3 @@
-
 import streamlit as st
 import random
 
@@ -9,145 +8,119 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. قاموس الترجمة الشامل للغات الست (القسم الأول من الـ MVP)
+# 2. قاموس الترجمة الشامل للغات الست (القسم الأول والثاني معاً)
 if 'translations' not in st.session_state:
     st.session_state.translations = {
         "العربية": {
             "lang_label": "اختر لغة المنصة / Choose Language",
-            "section_title": "🏆 المستطيل الأول: بوابة اللاعبين والناشئين (AI Scouting Portal)",
-            "sub_tiers": "📋 خطط الاشتراك المتاحة (الحد الأقصى 20$)",
+            "sec1_title": "🏆 القسم الأول: بوابة الناشئين والأكاديميات (AI Youth Scouting)",
+            "sec2_title": "👑 القسم الثاني: منصة المحترفين واللاعبين الكبار (AI Pro Analytics)",
+            "sub_tiers": "📋 خطط الاشتراك المتاحة للناشئين (الحد الأقصى 20$)",
             "tier_reg": "1️⃣ باقة التسجيل (المجانية)", "tier_active": "2️⃣ الباقة النشطة (10$ / شهرياً)", "tier_player": "3️⃣ باقة اللاعب الاحترافية (20$ / شهرياً)",
-            "age_lbl": "أدخل عمر اللاعب (حد أقصى 20 سنة):", "age_err": "⚠️ عذراً، هذا النظام مخصص للناشئين والأكاديميات حتى عمر 20 سنة فقط!",
-            "upload_lbl": "📹 ارفع فيديو مهاراتك أو مباراتك (MP4 - حد أقصى 200 ميجابايت):", "upload_btn": "⚙️ بدء تحليل الذكاء الاصطناعي واستخراج البيانات",
+            "age_lbl": "أدخل عمر اللاعب:", 
+            "age_err_sec1": "⚠️ هذا القسم مخصص للناشئين حتى عمر 20 سنة فقط! يرجى الانتقال للقسم الثاني.",
+            "age_err_sec2": "⚠️ هذا القسم مخصص للاعبين الكبار فوق 20 سنة فقط!",
+            "upload_lbl": "📹 ارفع فيديو مهاراتك أو مباراتك (MP4 - حد أقصى 200 ميجابايت):", 
+            "upload_btn1": "⚙️ بدء تحليل الناشئين والمطابقة",
+            "upload_btn2": "🧠 بدء التحليل الاحترافي الشامل ($30)",
             "card_title": "📊 بطاقة بيانات اللاعب الرقمية (Player Card)",
             "matching_title": "🤖 منظومة التشبيه والمطابقة مع النجوم العالميين",
-            "weakness_title": "🎯 تقرير نقاط الضعف والنقاط الناقصة للتحسين",
-            "visibility_msg": "📢 هذه البطاقة مرئية الآن تلقائياً لجميع الأندية المشاركة، الكشافين، ووكلاء اللاعبين لفرص التعاقد والشراء!",
-            "match_score": "نسبة التطابق الرقمي:", "weak_points": "نقاط تحتاج لتطوير:"
+            "weakness_title": "🎯 تقرير نقاط الضعف للتحسين",
+            "visibility_msg": "📢 هذه البطاقة مرئية الآن لجميع الأندية، الكشافين، ووكلاء اللاعبين!",
+            "match_score": "نسبة التطابق الرقمي:", "weak_points": "نقاط تحتاج لتطوير:",
+            "pro_sub_msg": "💳 اشتراك باقة الكبار المحترفة: 30 دولار شهرياً",
+            "pro_metrics": "📈 المؤشرات البدنية والفنية الاحترافية",
+            "pro_psy": "🧠 التحليل النفسي والسلوكي داخل الملعب",
+            "pro_health": "🏥 التقرير الطبي ومعدلات الإصابات والجاهزية",
+            "speed": "السرعة العمودية", "passing": "دقة التمرير والخطط", "stamina": "اللياقة البدنية والأداء",
+            "pressure": "اللعب تحت الضغط العالي", "focus": "نسبة التركيز في المركز", "duels": "التفوق في الثنائيات والالتحامات",
+            "adapt": "التأقلم مع الزملاء والخطط", "injury_pred": "نسبة التنبؤ بالإصابة المستقبيلية", "injury_rec": "نسبة شفاء الإصابة الحالية",
+            "ready_play": "جاهزية اللاعب للمباراة القادمة", "ready_yes": "✅ جاهز تماماً للعب", "ready_no": "❌ غير جاهز طبيعياً/نفسياً للعب",
+            "psy_ref": "العلاقة مع الحكام والملامح", "psy_coach": "الانضباط مع المدرب والتعليمات", "psy_team": "التفاعل والانسجام مع الزملاء",
+            "stats_title": "🔢 سجل دقائق ومباريات اللاعب المكتشفة من الفيديو",
+            "matches_played": "عدد المباريات التي لعبها", "mins_played": "إجمالي دقائق اللعب المكتشفة",
+            "advice_title": "💡 نصائح وتوجيهات الذكاء الاصطناعي التكتيكية للمحترفين"
         },
         "إنجليزي": {
             "lang_label": "Choose Platform Language",
-            "section_title": "🏆 Section 1: Player & Academy Scouting Portal (AI Powered)",
-            "sub_tiers": "📋 Available Subscription Tiers (Max $20)",
+            "sec1_title": "🏆 Section 1: Youth & Academy Portal (AI Youth Scouting)",
+            "sec2_title": "👑 Section 2: Pro & Senior Player Platform (AI Pro Analytics)",
+            "sub_tiers": "📋 Available Subscription Tiers for Youth (Max $20)",
             "tier_reg": "1️⃣ Registration Tier (Free)", "tier_active": "2️⃣ Active Tier ($10/mo)", "tier_player": "3️⃣ Player Premium Tier ($20/mo)",
-            "age_lbl": "Enter Player Age (Max 20 years old):", "age_err": "⚠️ Sorry, this system is for youth players and academies up to 20 years old only!",
-            "upload_lbl": "📹 Upload your skills/match video (MP4 - Max 200MB):", "upload_btn": "⚙️ Start AI Analytics & Data Extraction",
+            "age_lbl": "Enter Player Age:", 
+            "age_err_sec1": "⚠️ This section is for youth up to 20 years old only! Please use Section 2.",
+            "age_err_sec2": "⚠️ This section is for senior players over 20 years old only!",
+            "upload_lbl": "📹 Upload your match video (MP4 - Max 200MB):", 
+            "upload_btn1": "⚙️ Start Youth Analytics & Matching",
+            "upload_btn2": "🧠 Start Comprehensive Pro Analytics ($30)",
             "card_title": "📊 Digital Player Card & Performance Metrics",
-            "matching_title": "🤖 AI Mirror & Global Player Matching System",
-            "weakness_title": "🎯 Deficiencies & Weaknesses Report for Improvement",
-            "visibility_msg": "📢 This player card is now automatically visible to all participating clubs, scouts, and agents for transfer opportunities!",
-            "match_score": "AI Match Score:", "weak_points": "Areas for Improvement:"
+            "matching_title": "🤖 AI Mirror & Global Player Matching",
+            "weakness_title": "🎯 Deficiencies & Weaknesses Report",
+            "visibility_msg": "📢 This player card is now visible to all participating clubs, scouts, and agents!",
+            "match_score": "AI Match Score:", "weak_points": "Areas for Improvement:",
+            "pro_sub_msg": "💳 Pro Senior Subscription: $30/month",
+            "pro_metrics": "📈 Professional Physical & Technical Metrics",
+            "pro_psy": "🧠 On-Field Psychological & Behavioral Analysis",
+            "pro_health": "🏥 Medical Report, Injury Rates & Readiness",
+            "speed": "Vertical Speed", "passing": "Passing & Tactical Accuracy", "stamina": "Physical Fitness & Performance",
+            "pressure": "Performance Under High Pressure", "focus": "Position Focus Rate", "duels": "Success Rate in Duels",
+            "adapt": "Adaptability to Teammates & Tactics", "injury_pred": "Injury Prediction Probability", "injury_rec": "Current Injury Recovery Rate",
+            "ready_play": "Match Readiness for Next Game", "ready_yes": "✅ Fully Ready to Play", "ready_no": "❌ Not Ready (Medical/Psychological)",
+            "psy_ref": "Relationship with Referees & Expressions", "psy_coach": "Discipline with Coach & Instructions", "psy_team": "Interaction with Teammates",
+            "stats_title": "🔢 Detected Match Statistics & Minutes from Video",
+            "matches_played": "Matches Played", "mins_played": "Total Detected Minutes",
+            "advice_title": "💡 AI Tactical Advice & Guidelines for Professionals"
         },
         "الفرنسية": {
             "lang_label": "Choisir la Langue",
-            "section_title": "🏆 Section 1: Portail de Recrutement des Joueurs (Propulsé par l'IA)",
-            "sub_tiers": "📋 Formules d'Abonnement Disponibles (Max 20$)",
+            "sec1_title": "🏆 Section 1: Portail des Jeunes (AI Youth Scouting)",
+            "sec2_title": "👑 Section 2: Plateforme des Professionnels et Seniors (AI Pro Analytics)",
+            "sub_tiers": "📋 Formules d'Abonnement Disponibles pour Jeunes (Max 20$)",
             "tier_reg": "1️⃣ Formule Inscription (Gratuit)", "tier_active": "2️⃣ Formule Active (10$/mois)", "tier_player": "3️⃣ Formule Joueur Pro (20$/mois)",
-            "age_lbl": "Entrez l'âge du joueur (Max 20 ans):", "age_err": "⚠️ Désolé, ce système est réservé aux jeunes joueurs jusqu'à 20 ans uniquement!",
-            "upload_lbl": "📹 Téléchargez votre vidéo de match (MP4 - Max 200Mo):", "upload_btn": "⚙️ Lancer l'analyse IA et l'extraction de données",
+            "age_lbl": "Entrez l'âge du joueur:", 
+            "age_err_sec1": "⚠️ Cette section est réservée aux jeunes jusqu'à 20 ans! Utilisez la Section 2.",
+            "age_err_sec2": "⚠️ Cette section est réservée aux joueurs de plus de 20 ans!",
+            "upload_lbl": "📹 Téléchargez votre vidéo de match (MP4 - Max 200Mo):", 
+            "upload_btn1": "⚙️ Lancer l'analyse des jeunes",
+            "upload_btn2": "🧠 Lancer l'analyse Pro complète (30$)",
             "card_title": "📊 Carte Numérique du Joueur et Métriques",
-            "matching_title": "🤖 Système de Correspondance IA avec les Étoiles Mondiales",
-            "weakness_title": "🎯 Rapport des Points Faibles et Lacunes à Améliorer",
-            "visibility_msg": "📢 Cette carte est visible par tous les clubs, recruteurs et agents pour des opportunités de transfert!",
-            "match_score": "Score de correspondance IA:", "weak_points": "Points à améliorer:"
+            "matching_title": "🤖 Système de Correspondance IA Stars",
+            "weakness_title": "🎯 Rapport des Points Faibles",
+            "visibility_msg": "📢 Cette carte est maintenant visible par tous les clubs et agents!",
+            "match_score": "Score de correspondance IA:", "weak_points": "Points à améliorer:",
+            "pro_sub_msg": "💳 Abonnement Pro Senior: 30$/mois",
+            "pro_metrics": "📈 Métriques Physiques et Techniques Professionnelles",
+            "pro_psy": "🧠 Analyse Psychologique et Comportementale",
+            "pro_health": "🏥 Rapport Médical, Blessures et Disponibilité",
+            "speed": "Vitesse Verticale", "passing": "Précision des Passes & Tactique", "stamina": "Forme Physique & Performance",
+            "pressure": "Performance sous Haute Pression", "focus": "Taux de Concentration", "duels": "Taux de Réussite dans les Duels",
+            "adapt": "Adaptabilité aux Coéquipiers", "injury_pred": "Prédiction des Blessures futuras", "injury_rec": "Taux de Récupération Actuel",
+            "ready_play": "Disponibilité pour le Prochain Match", "ready_yes": "✅ Totalement Prêt à Jouer", "ready_no": "❌ Non Prêt (Médical/Psychologique)",
+            "psy_ref": "Relation avec les Arbitres & Expressions", "psy_coach": "Discipline avec l'Entraîneur", "psy_team": "Interaction avec les Coéquipiers",
+            "stats_title": "🔢 Statistiques et Minutes Détectées dans la Vidéo",
+            "matches_played": "Matchs Joués", "mins_played": "Total des Minutes Détectées",
+            "advice_title": "💡 Conseils Tactiques de l'IA pour Professionnels"
         },
-        "الإسبانية": {
+         "الإسبانية": {
             "lang_label": "Seleccionar Idioma",
-            "section_title": "🏆 Sección 1: Portal de Escultismo para Jugadores (Impulsado por IA)",
-            "sub_tiers": "📋 Niveles de Suscripción Disponibles (Máx. $20)",
-            "tier_reg": "1️⃣ Nivel de Registro (Gratis)", "tier_active": "2️⃣ Nivel Activo ($10/mes)", "tier_player": "3️⃣ Nivel de Jugador Premium ($20/mes)",
-            "age_lbl": "Ingrese la edad del jugador (Máx. 20 años):", "age_err": "⚠️ ¡Lo sentimos, este sistema es solo para jugadores juveniles de hasta 20 años!",
-            "upload_lbl": "📹 Sube tu video de partido (MP4 - Máx. 200MB):", "upload_btn": "⚙️ Iniciar análisis de IA y extracción de datos",
-            "card_title": "📊 Tarjeta Digital del Jugador y Métricas de Rendimiento",
-            "matching_title": "🤖 Sistema de Emparejamiento de IA con Estrellas Globales",
-            "weakness_title": "🎯 Reporte de Puntos Débiles y Deficiencias para Mejorar",
-            "visibility_msg": "📢 ¡Esta tarjeta de jugador ahora es visible para todos los clubes, scouts y agentes participantes!",
-            "match_score": "Puntuación de emparejamiento de IA:", "weak_points": "Áreas a mejorar:"
-        },
-        "إيطالي": {
-            "lang_label": "Seleziona Lingua",
-            "section_title": "🏆 Sezione 1: Portale di Scouting per Giovani Calciatori (AI)",
-            "sub_tiers": "📋 Piani di Abbonamento Disponibili (Max $20)",
-            "tier_reg": "1️⃣ Piano Registrazione (Gratuito)", "tier_active": "2️⃣ Piano Attivo ($10/mese)", "tier_player": "3️⃣ Piano Giocatore Premium ($20/mese)",
-            "age_lbl": "Inserisci l'età del giocatore (Max 20 anni):", "age_err": "⚠️ Spiacenti, questo sistema è riservato ai giovani fino a 20 anni!",
-            "upload_lbl": "📹 Carica il video del tuo match (MP4 - Max 200MB):", "upload_btn": "⚙️ Avvia l'analisi dell'IA e l'estrazione dei dati",
-            "card_title": "📊 Carta Digitale del Giocatore e Metriche",
-            "matching_title": "🤖 Sistema di Accoppiamento IA con le Stelle Mondiali",
-            "weakness_title": "🎯 Rapporto sui Punti Deboli e Carenze da Migliorare",
-            "visibility_msg": "📢 Questa scheda è visibile a tutti i club, scout e agenti per opportunità di trasferimento!",
-            "match_score": "Punteggio di accoppiamento IA:", "weak_points": "Aree da migliorare:"
-        },
-        "البرتغالية": {
-            "lang_label": "Escolher Idioma",
-            "section_title": "🏆 Seção 1: Portal de Olheiros para Jogadores e Academias (IA)",
-            "sub_tiers": "📋 Planos de Assinatura Disponíveis (Máx. $20)",
-            "tier_reg": "1️⃣ Plano de Registro (Gratuito)", "tier_active": "2️⃣ Plano Ativo ($10/mês)", "tier_player": "3️⃣ Plano de Jogador Premium ($20/mês)",
-            "age_lbl": "Insira a idade do jogador (Máx. 20 anos):", "age_err": "⚠️ Desculpe, este sistema é apenas para jovens jogadores de até 20 anos!",
-            "upload_lbl": "📹 Carregue o vídeo do seu jogo (MP4 - Máx. 200MB):", "upload_btn": "⚙️ Iniciar Análise de IA e Extração de Dados",
-            "card_title": "📊 Cartão Digital do Jogador e Métricas de Desempenho",
-            "matching_title": "🤖 Sistema de Combinação de IA com Estrelas Globais",
-            "weakness_title": "🎯 Relatório de Pontos Fracos e Deficiências para Melhoria",
-            "visibility_msg": "📢 Este cartão de jogador está visível para todos os clubes, olheiros e agentes participantes!",
-            "match_score": "Pontuação de correspondência de IA:", "weak_points": "Áreas para melhoria:"
-        }
-    }
-
-# 3. محدد اللغات الست بالأعلى (مربوط بآلية إعادة التحديث التلقائي)
-selected_lang = st.radio(
-    st.session_state.translations["العربية"]["lang_label"],
-    ["إنجليزي", "العربية", "الفرنسية", "الإسبانية", "إيطالي", "البرتغالية"],
-    key="mvp_language_selector"
-)
-
-t = st.session_state.translations[selected_lang]
-
-st.markdown(f"## {t['section_title']}")
-st.divider()
-
-# 4. عرض مستويات الاشتراك الثلاثة (حد أقصى 20 دولار)
-st.markdown(f"#### {t['sub_tiers']}")
-tier_col1, tier_col2, tier_col3 = st.columns(3)
-with tier_col1:
-    st.info(t["tier_reg"])
-with tier_col2:
-    st.success(t["tier_active"])
-with tier_col3:
-    st.warning(t["tier_player"])
-
-st.divider()
-
-# 5. فحص شرط السن (حد أقصى 20 سنة)
-player_age = st.number_input(t["age_lbl"], min_value=1, max_value=50, value=17)
-
-if player_age > 20:
-    st.error(t["age_err"])
-else:
-    # 6. بوابة رفع الفيديوهات (حتى 200 ميجابايت)
-    uploaded_video = st.file_uploader(t["upload_lbl"], type=["mp4"])
-    
-    if uploaded_video is not None:
-        st.video(uploaded_video)
-        
-        if st.button(t["upload_btn"], type="primary", use_container_width=True):
-            with st.spinner("AI is processing video frames, overlapping tracks and extracting data..."):
-                
-                # قاعدة بيانات النجوم (الـ 15 الأساسيين + النجوم الإضافيين الجدد لتوسيع المنظومة)
-                global_stars = [
-                    "Mbappé", "Ronaldo", "Messi", "Haaland", "De Bruyne", "Modrić", 
-                    "Vinícius", "Van Dijk", "Camavinga", "Gakpo", "Lamine Yamal", 
-                    "Pedri", "Rodrygo", "Hakimi", "Donnarumma", "Simeone",
-                    "Bellingham", "Musiala", "Wirtz", "Saka", "Saliba", "Courtois"
-                ]
-                
-                # اختيار نجم عشوائي للمحاكاة الذكية في الـ MVP
-                selected_star = random.choice(global_stars)
-                match_percentage = random.randint(75, 95)
-                
-                # عينات من نقاط الضعف التكتيكية لإصدار التقرير
-                weakness_samples = [
-                    "الارتداد الدفاعي البطيء عند فقدان الاستحواذ (Defensive Transition)",
-                    "دقة الكرات العرضية تحت الضغط العالي (Crossing under pressure)",
-                    "توقيت التدخل واستخلاص الكرة بدون خطأ (Tackle Timing)",
-                    "معدل اللياقة البدنية في الـ 15 دقيقة الأخيرة من المباراة (Endurance)",
-                    "سرعة اتخاذ القرار بالتمرير العمودي (Decision Making)"
-                ]
+            "sec1_title": "🏆 Sección 1: Portal Juvenil (AI Youth Scouting)",
+            "sec2_title": "👑 Sección 2: Plataforma para Profesionales y Mayores (AI Pro Analytics)",
+            "sub_tiers": "📋 Suscripciones para Juveniles (Máx. $20)",
+            "tier_reg": "1️⃣ Registro (Gratis)", "tier_active": "2️⃣ Activo ($10/mes)", "tier_player": "3️⃣ Jugador Premium ($20/mes)",
+            "age_lbl": "Ingrese la edad:", 
+            "age_err_sec1": "⚠️ ¡Esta sección es solo para menores de 20 años! Use la Sección 2.",
+            "age_err_sec2": "⚠️ ¡Esta sección es solo para mayores de 20 años!",
+            "upload_lbl": "📹 Cargar archivo MP4 (Máx 200MB):", 
+            "upload_btn1": "⚙️ Iniciar Análisis Juvenil",
+            "upload_btn2": "🧠 Iniciar Análisis Pro Completo ($30)",
+            "card_title": "📊 Tarjeta Digital e Índices",
+            "matching_title": "🤖 Emparejamiento IA con Estrellas",
+            "weakness_title": "🎯 Reporte de Puntos Débiles",
+            "visibility_msg": "📢 ¡Tarjeta visible para todos los clubes y agentes!",
+            "match_score": "Match IA:", "weak_points": "Áreas a mejorar:",
+            "pro_sub_msg": "💳 Suscripción Pro Senior: $30/mes",
+            "pro_metrics": "📈 Métricas Físicas y Técnicas Pro",
+            "pro_psy": "🧠 Análisis Psicológico en el Campo",
+            "pro_health": "🏥 Reporte Médico y Disponibilidad",
+            "speed": "Velocidad", "passing": "Pases y Táctica", "stamina": "Resistencia",
+            "pressure": "Bajo Presión", "focus": "Enfoque de Posición", "duels": "Duelos Ganados",
