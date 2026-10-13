@@ -11,7 +11,7 @@ st.set_page_config(
 # 2. قاموس الترجمة الشامل والمغلق لجميع اللغات الست (القسم الأول والثاني معاً)
 if 'translations' not in st.session_state:
     st.session_state.translations = {
-        "العربية": {
+        "ar": {
             "lang_label": "اختر لغة المنصة / Choose Language",
             "sec1_title": "🏆 القسم الأول: بوابة الناشئين والأكاديميات (AI Youth Scouting)",
             "sec2_title": "👑 القسم الثاني: منصة المحترفين واللاعبين الكبار (AI Pro Analytics)",
@@ -41,7 +41,7 @@ if 'translations' not in st.session_state:
             "matches_played": "عدد المباريات التي لعبها", "mins_played": "إجمالي دقائق اللعب المكتشفة",
             "advice_title": "💡 نصائح وتوجيهات الذكاء الاصطناعي التكتيكية للمحترفين"
         },
-        "إنجليزي": {
+        "en": {
             "lang_label": "Choose Platform Language",
             "sec1_title": "🏆 Section 1: Youth & Academy Portal (AI Youth Scouting)",
             "sec2_title": "👑 Section 2: Pro & Senior Player Platform (AI Pro Analytics)",
@@ -71,7 +71,7 @@ if 'translations' not in st.session_state:
             "matches_played": "Matches Played", "mins_played": "Total Detected Minutes",
             "advice_title": "💡 AI Tactical Advice & Guidelines for Professionals"
         },
-        "الفرنسية": {
+        "fr": {
             "lang_label": "Choisir la Langue",
             "sec1_title": "🏆 Section 1: Portail des Jeunes (AI Youth Scouting)",
             "sec2_title": "👑 Section 2: Plateforme des Professionnels (AI Pro Analytics)",
@@ -101,7 +101,7 @@ if 'translations' not in st.session_state:
             "matches_played": "Matchs Joués", "mins_played": "Total des Minutes Détectées",
             "advice_title": "💡 Conseils Tactiques de l'IA pour Professionnels"
         },
-        "الإسبانية": {
+        "es": {
             "lang_label": "Seleccionar Idioma",
             "sec1_title": "🏆 Sección 1: Portal Juvenil (AI Youth Scouting)",
             "sec2_title": "👑 Sección 2: Plataforma para Profesionales (AI Pro Analytics)",
@@ -125,3 +125,4 @@ if 'translations' not in st.session_state:
             "speed": "Velocidad", "passing": "Pases y Táctica", "stamina": "Resistencia",
             "pressure": "Bajo Presión", "focus": "Enfoque de Posición", "duels": "Duelos Ganados",
             "adapt": "Adaptación con Compañeros", "injury_pred": "Predicción de Lesiones", "injury_rec": "Recuperación de Lesión",
+        }،
