@@ -11,7 +11,7 @@ st.set_page_config(
 # 2. قاموس الترجمة الشامل والمغلق لجميع اللغات الست (القسم الأول والثاني معاً)
 if 'translations' not in st.session_state:
     st.session_state.translations = {}
-        "ar": {
+    "ar": {
             "lang_label": "اختر لغة المنصة / Choose Language",
             "sec1_title": "🏆 القسم الأول: بوابة الناشئين والأكاديميات (AI Youth Scouting)",
             "sec2_title": "👑 القسم الثاني: منصة المحترفين واللاعبين الكبار (AI Pro Analytics)",
